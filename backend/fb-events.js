@@ -43,7 +43,7 @@ function events_every(time, db_promises) {
 
 function query_events(groups, db_promises) {
   for (const group_name in groups) {
-    const group_id = groups[group_name];
+    const group_id = groups[group_name].id;
     const now = Math.floor(Date.now() / 1000);
     FBReq(`${group_id}/events?since=${now}`, res => {
       if (!res || !res.data) {

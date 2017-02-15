@@ -37,6 +37,13 @@ header > div {
 header > ul { margin-left:auto;}
 #container { padding:1em; }
 
+.events-legend {
+  display:flex;
+  justify-content:space-around;
+  background-color: #2d4c63;
+  background-image: url("grunge-wall.png");
+}
+
 @media (max-width: 300px) {
 
 }

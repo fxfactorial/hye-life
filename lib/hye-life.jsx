@@ -3,8 +3,13 @@ import BigCalendar from 'react-big-calendar';
 import moment_timezone from 'moment-timezone';
 import Slider from 'react-slick';
 import images from './slides';
+import {color_for_host, color_for_cat} from './coloring';
+// Very awesome build time sharing of code, yay webpack2
+import groups from '../backend/groups.json';
 
 const default_scroll_time = new Date(1970, 1, 1, 4);
+const languages = ['Eng', 'РУС', 'Հայ'];
+
 moment_timezone.tz.setDefault('Asia/Yerevan');
 BigCalendar.momentLocalizer(moment_timezone);
 
@@ -26,13 +31,12 @@ class Banner extends Component {
   }
 
   render () {
-    const choices = 
-	  ['Հայ', 'Eng', 'РУС'].map((item, idx) => {
-	    const c =
-		  item === this.props.event_titles_language
-		  ? 'language-active' : 'language-inactive';
-	    return <li key={idx} className={c}>{item}</li>;
-	  });
+    const choices = languages.map((item, idx) => {
+      const c =
+	    item === this.props.event_titles_language
+	    ? 'language-active' : 'language-inactive';
+      return <li key={idx} className={c}>{item}</li>;
+    });
     const langs = (
       <ul style={{display:'inline-flex'}}
 	  onClick={e => this.props.language_pick(e.target.textContent)}>
@@ -58,7 +62,7 @@ class Banner extends Component {
         <header>
 	  <div>
 	    <p>
-	      hye.life 🇦🇲
+	      {`${this.state.event_count} arts & cultural events  🇦🇲`}
 	    </p>
 	    {langs}
 	  </div>
@@ -116,33 +120,25 @@ ${event.desc}
           }}
           onSelectSlot={this.selectedDate}
           events={this.state.events}
+	  eventPropGetter={custom_render}
           />
       </div>
     );
   }
 };
 
+function custom_render(event) {
+  const backgroundColor = color_for_host(event.sourced_from);
+  return {style:{backgroundColor}};
+}
+
 function Eventbyline({event, lang}) {
-
   const titles = event.title.split('/');
-  let title = null;
-
-  switch (lang) {
-  case 'Հայ': title = titles[2]; break;
-  case 'Eng': title = titles[0]; break;
-  case 'РУС': title = titles[1]; break;
-  default: throw new Error('Unknown language');
-  }
-
-  return (
-    <span>
-      <p>{title}</p>
-    </span>
-  );
+  const title = titles[languages.indexOf(lang)];
+  return <span><p>{title}</p></span>;
 };
 
 function EventAgenda({event}) {
-  const langs = ['Eng', 'РУС', 'Հայ'];
   const text_style = {
     marginTop:'1rem',
     textIndent:'2rem',
@@ -153,7 +149,7 @@ function EventAgenda({event}) {
   const top = event.title.split('/').map((i, idx) => {
     return (
       <p key={idx} style={{paddingLeft:'0.25rem'}}>
-        {langs[idx]} = {i}
+        {languages[idx]} = {i}
       </p>
     );
   });
@@ -172,6 +168,33 @@ function EventAgenda({event}) {
   );
 };
 
+let items = [];
+for (const name in groups) { items.push(groups[name].category); }
+
+const cats = Array.from(new Set(items))
+      .map(event_t => {
+	return (
+	  <div className={'event-legend-color'}
+	       key={event_t}>
+	    <h2>{event_t}</h2>
+	    <div
+	      style={{
+		backgroundColor:color_for_cat(event_t),
+		minHeight:'20px',
+
+		borderRadius:'10px'
+	      }}>
+	    </div>
+	  </div>
+	);
+      });
+
+const legend = (
+  <div className={'events-legend'}>
+    {cats}
+  </div>
+);
+
 export default
 class _ extends Component {
 
@@ -184,6 +207,7 @@ class _ extends Component {
         <Banner
 	  event_titles_language={this.state.lang}
 	  language_pick={lang => this.setState({lang})} />
+	  {legend}
 	  <ArtsCalendar title_language={this.state.lang}/>
 	  <footer>
             <p>
@@ -196,3 +220,4 @@ class _ extends Component {
     );
   }
 };
+
