@@ -3,11 +3,10 @@
 html { box-sizing: border-box; }
 *, *:before, *:after { box-sizing: inherit; }
 /*  Basic resets for modern browsers */
-
-@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Lato');
 
 * {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Lato', sans-serif;
   min-height: 0;
   min-width: 0;
 }
