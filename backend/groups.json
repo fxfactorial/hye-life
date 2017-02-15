@@ -9,5 +9,11 @@
   "Նարեկացի նվագախումբ / Naregatsi Orchestra":{"id":444145799110495, "category":"live performance"},
   "Նարեկացի Արվեստի Միություն Naregatsi Art Institute":{"id":155794214455823, "category":"gallery"},
   "Aram Khachaturyan Concert Hall": {"id":237191889644410, "category":"live performance"},
-  "State Youth Orchestra of Armenia":{"id":105638019531914, "category":"live performance"}
+  "State Youth Orchestra of Armenia":{"id":105638019531914, "category":"live performance"},
+  "American University of Armenia": {"id":159219260801636, "category":"casual"},
+  "Repairing the Future":{"id":257782204365472, "category":"casual"},
+  "Armenian Geographic":{"id":531758710177390, "category":"casual"},
+  "The Club Yerevan":{"id":294923567780, "category":"casual"},
+  "Yerevan State University":{"id":226947480700633, "category":"casual"},
+  "Megerian Carpet Armenia":{"id":289176461187229, "category":"casual"}
 }

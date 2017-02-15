@@ -1,8 +1,8 @@
 import groups from '../backend/groups.json';
 
 const emojis = [
-  '🏛',
   '🎟',
+  '🏛',
   '🖼',
   '🎻',
 ];
