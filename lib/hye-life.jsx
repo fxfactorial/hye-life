@@ -10,8 +10,22 @@ BigCalendar.momentLocalizer(moment_timezone);
 const images = [
   {descr: 'Komitas in thought', src: 'komitas.jpg'},
   {descr: 'The Matendaran manuscript library', src: '1280px-Matenadaran_3.jpg'},
-  {descr: 'Manuscripts', src: ''}
+  {descr: 'Manuscripts', src: 'Armenian_Manuscript_no._4_Wellcome_L0022854.jpg'},
+  {descr: 'Armenian Yarkhuskta Dance', src: 'Armenian_martial_dance_Yarkhushta.jpg'},
+  {descr: '18th Century Armenian Linen weave', src: 'Cover,_Armenia,_18th_century,_Linen,_silk,_plain_weave,_embroidery_(cross_stitch),_drawnwork_lace,_Honolulu_Academy_of_Arts.jpg'},
+  {descr: 'Cave', src: 'artsakh.jpg'},
+  {descr: 'LeonII, Queen Guerane and their five children - 1272', src: 'LeonIIQueenGueraneAndTheirFiveChildren1272.jpg'},
+  {descr: 'Tatev Monastery', src: 'Tatev_Monastery_from_a_distance.jpg'},
+  {descr: 'Dilijan, a piece of Switzerland in Armenia', src:'dilijan.jpg'}
 ];
+
+const slides = images.map(o => {
+  return (
+    <div className={'culture-image'} title={o.descr}>
+      <img src={o.src}/>
+    </div>
+  );
+});
 
 class Banner extends Component {
 
@@ -47,6 +61,8 @@ class Banner extends Component {
       arrows:false,
       afterChange:image_index => this.setState({...this.state, image_index})
     };
+
+
     return (
       <div className={'top-banner-container'}>
         <header>
@@ -58,38 +74,13 @@ class Banner extends Component {
 	  </div>
         </header>
 
-	<div className={'banner-slider'} style={{zIndex:0, position:'relative'}}>
-	  <Slider {...settings}>
-	    <div className={'culture-image'}>
-	      <img src={'komitas.jpg'}/>
-	    </div>
-	    <div className={'culture-image'}>
-	      <img src={'1280px-Matenadaran_3.jpg'}/>
-	    </div>
-            <div className={'culture-image'}>
-	      <img src={'Armenian_Manuscript_no._4_Wellcome_L0022854.jpg'}/>
-	    </div>
-            <div className={'culture-image'}>
-	      <img src={'Armenian_martial_dance_Yarkhushta.jpg'}/>
-	    </div>
-            <div className={'culture-image'}>
-	      <img src={'Cover,_Armenia,_18th_century,_Linen,_silk,_plain_weave,_embroidery_(cross_stitch),_drawnwork_lace,_Honolulu_Academy_of_Arts.jpg'}/>
-	    </div>
-            <div className={'culture-image'}>
-	      <img src={'artsakh.jpg'}/>
-	    </div>
-            <div className={'culture-image'}>
-	      <img src={'LeonIIQueenGueraneAndTheirFiveChildren1272.jpg'}/>
-	    </div>
-            <div className={'culture-image'}>
-	      <img src={'Tatev_Monastery_from_a_distance.jpg'}/>
-	    </div>
-            <div className={'culture-image'}> <img src={'dilijan.jpg'}/>
-	    </div>
-	  </Slider>
-	  <div style={{zIndex:1, position:'relative'}}>
+	<div className={'banner-slider'} >
+	  <h2>
 	    {`${images[this.state.image_index].descr}`}
-	  </div>
+	  </h2>
+	  <Slider {...settings}>
+	    {slides}
+	  </Slider>
 	</div>
       </div>
     );
