@@ -81,7 +81,9 @@ button.rbc-input::-moz-focus-inner {
   font-size: 16px;
 }
 .rbc-toolbar .rbc-toolbar-label {
-  width: 100%;
+  /* Better to have flex-grow 1, open a PR later */
+  /* width: 100%; */
+  flex-grow: 1;
   padding: 0 10px;
   text-align: center;
 }
