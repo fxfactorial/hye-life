@@ -58,7 +58,7 @@ class Banner extends Component {
 	  </div>
         </header>
 
-	<div className={'banner-slider'}>
+	<div className={'banner-slider'} style={{zIndex:0, position:'relative'}}>
 	  <Slider {...settings}>
 	    <div className={'culture-image'}>
 	      <img src={'komitas.jpg'}/>
@@ -87,8 +87,10 @@ class Banner extends Component {
             <div className={'culture-image'}> <img src={'dilijan.jpg'}/>
 	    </div>
 	  </Slider>
+	  <div style={{zIndex:1, position:'relative'}}>
+	    {`${images[this.state.image_index].descr}`}
+	  </div>
 	</div>
-	{`${images[this.state.image_index].descr}`}
       </div>
     );
   }
