@@ -16,14 +16,18 @@ export const emoji_for_cat = cat => {
   return emojis[categories.indexOf(cat)];
 };
 
-export const color_for_cat = cat => {
-  switch(cat) {
-  case 'musuem':           return 'orange';
-  case 'casual':           return 'yellow';
-  case 'gallery':          return 'red';
-  case 'live performance': return 'green';
-  default:                 return 'blue';
-  };
+// https://designschool.canva.com/blog/100-color-combinations/
+export const neutral = ['#626D71', '#CDCDC0', '#DDBC95', '#B38867'];
+export const brights = ['#258039', '#F5BE41', '#31A9B8', '#CF3721'];
+
+export const NEUTRAL = 'neutral';
+export const BRIGHTS = 'brights';
+
+export const color_for_cat = (cat, choice) => {
+  if (choice === NEUTRAL)
+    return neutral[categories.indexOf(cat)];
+  else
+    return brights[categories.indexOf(cat)];
 };
 
 export const color_for_host = host => {

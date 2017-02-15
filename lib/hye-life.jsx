@@ -3,7 +3,11 @@ import BigCalendar from 'react-big-calendar';
 import moment_timezone from 'moment-timezone';
 import Slider from 'react-slick';
 import images from './slides';
-import {color_for_host, color_for_cat, emoji_for_cat} from './coloring';
+import {
+  color_for_host, color_for_cat, emoji_for_cat,
+  NEUTRAL, BRIGHTS
+}
+from './coloring';
 // Very awesome build time sharing of code, yay webpack2
 import groups from '../backend/groups.json';
 
@@ -29,6 +33,10 @@ class Banner extends Component {
     this.setState({...this.state,
 		   event_count:window.__EVENT_COUNT_THIS_MONTH__});
   }
+
+  // handle_scheme_change = e => {
+  //   const v = e.target.value;
+  // }
 
   render () {
     const choices = languages.map((item, idx) => {
@@ -56,6 +64,12 @@ class Banner extends Component {
       arrows:false,
       afterChange:image_index => this.setState({...this.state, image_index})
     };
+
+	  // <select value={this.props.color_scheme}
+	  // 	  onChange={this.handle_scheme_change}>
+	  //   <option value={'neutral'}>neutral</option>
+	  //   <option value={'bright'}>bright</option>
+	  // </select>
 
     return (
       <div className={'top-banner-container'}>
@@ -115,7 +129,8 @@ ${event.desc}
 	  `)}
           timeslots={1}
           components={{
-            event:event => Eventbyline({event, lang:this.props.title_language}),
+            event:event =>
+	      Eventbyline({event, lang:this.props.title_language}),
             agenda:{event:EventAgenda}
           }}
           onSelectSlot={this.selectedDate}
@@ -171,7 +186,20 @@ function EventAgenda({event}) {
 let items = [];
 for (const name in groups) { items.push(groups[name].category); }
 
-const cats = Array.from(new Set(items))
+export default
+class _ extends Component {
+
+  state = {lang:'Eng', color_scheme:BRIGHTS}
+
+  // color_pick (color) {
+  //   this.setState({...this.state, color_scheme:BRIGHTS});
+  // }
+
+  render () {
+    const link =
+	  <a href={'https://github.com/fxfactorial/hye-life'}>here</a>;
+    
+    const cats = Array.from(new Set(items))
       .map(event_t => {
 	return (
 	  <div className={'event-legend-color'}
@@ -179,9 +207,9 @@ const cats = Array.from(new Set(items))
 	    <h2>{event_t}{' '}{emoji_for_cat(event_t)}</h2>
 	    <div
 	      style={{
-		backgroundColor:color_for_cat(event_t),
+		backgroundColor:color_for_cat(event_t,
+					      this.state.color_scheme),
 		minHeight:'20px',
-
 		borderRadius:'10px'
 	      }}>
 	    </div>
@@ -189,25 +217,18 @@ const cats = Array.from(new Set(items))
 	);
       });
 
-const legend = (
-  <div className={'events-legend'}>
-    {cats}
-  </div>
-);
-
-export default
-class _ extends Component {
-
-  state = {lang:'Eng'}
-
-  render () {
-    const link =
-	  <a href={'https://github.com/fxfactorial/hye-life'}>here</a>;
+    const legend = (
+      <div className={'events-legend'}>
+	{cats}
+      </div>
+    );
+    // color_scheme_pick={this.color_pick}
     return (
       <div>
         <Banner
+	  color_scheme={this.state.color_scheme}
 	  event_titles_language={this.state.lang}
-	  language_pick={lang => this.setState({lang})} />
+	  language_pick={lang => this.setState({...this.state, lang})} />
 	  {legend}
 	  <ArtsCalendar title_language={this.state.lang}/>
 	  <footer>
