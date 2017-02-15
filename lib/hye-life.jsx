@@ -44,9 +44,11 @@ class Banner extends Component {
       dots: false,
       infinite: true,
       autoplay:true,
-      speed: 600,
-      slidesToShow: 1,
-      slidesToScroll: 1,
+      speed: 800,
+      // autoplaySpeed:3000,
+      pauseOnHover:false,
+      slidesToShow: 2,
+      // slidesToScroll: 1,
       arrows:false,
       afterChange:image_index => this.setState({...this.state, image_index})
     };
