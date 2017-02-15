@@ -49,17 +49,6 @@ header > ul { margin-left:auto;}
     font-size:xx-large;
   }
 
-  .mid-calendar-component {
-    min-height:400px;
-    min-width:100px;
-  }
-
-  .mid-calendar-component > div {
-    background-color:red;
-    height:50%;
-    width:50%;
-  }
-
 }
 
 ul > li { padding-right:0.50em; }

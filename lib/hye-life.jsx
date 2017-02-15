@@ -36,7 +36,8 @@ class Banner extends Component {
       autoplay:true,
       speed: 500,
       slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      arrows:false
     };
     return (
       <div className={'top-banner-container'}>
@@ -105,28 +106,24 @@ class ArtsCalendar extends Component {
   render () {
     return (
       <div className={'mid-calendar-component'}>
-
-	<div>
-          <BigCalendar
-            selectable
-            scrollToTime={default_scroll_time}
-            popup={true}
-	    onSelectEvent={event => alert(`
+        <BigCalendar
+          selectable
+          scrollToTime={default_scroll_time}
+          popup={true}
+	  onSelectEvent={event => alert(`
 Hosted by ${event.sourced_from}
 ${event.url}
 
 ${event.desc}
-	    `)}
-            timeslots={1}
-            components={{
-              event:event => Eventbyline({event, lang:this.props.title_language}),
-              agenda:{event:EventAgenda}
-            }}
-            onSelectSlot={this.selectedDate}
-            events={this.state.events}
-            />
-	</div>
-	
+	  `)}
+          timeslots={1}
+          components={{
+            event:event => Eventbyline({event, lang:this.props.title_language}),
+            agenda:{event:EventAgenda}
+          }}
+          onSelectSlot={this.selectedDate}
+          events={this.state.events}
+          />
       </div>
     );
   }
@@ -194,7 +191,7 @@ class _ extends Component {
         <Banner
 	  event_titles_language={this.state.lang}
 	  language_pick={lang => this.setState({lang})} />
-
+	  <ArtsCalendar title_language={this.state.lang}/>
 	  <footer>
             <p>
 	      Get the source code {link},
