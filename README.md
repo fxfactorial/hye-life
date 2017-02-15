@@ -23,7 +23,7 @@ make a `pull request` to me.
 To add a FB group for the events calendar to automatically show, just
 checkout the `backend/groups.json` file, add a `Facebook` group name and its
 ID, then open a pull request with the new group added. You can find
-the group's ID using something like `https://lookup-id.com`.
+the group's ID using something like `http://findmyfbid.com`.
 
 # Adding/Making changes to the slideshow
 To make a change to the slide show, like changing a description or
