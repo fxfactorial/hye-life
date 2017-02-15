@@ -37,7 +37,10 @@ class Banner extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      arrows:false
+      arrows:false,
+      afterChange:function() {
+	console.log(arguments);
+      }
     };
     return (
       <div className={'top-banner-container'}>
@@ -50,35 +53,36 @@ class Banner extends Component {
 	  </div>
         </header>
 
-	<Slider {...settings}>
-	  <div className={'culture-image'}>
-	    <img src={'komitas.jpg'}/>
-	  </div>
-	  <div className={'culture-image'}>
-	    <img src={'1280px-Matenadaran_3.jpg'}/>
-	  </div>
-          <div className={'culture-image'}>
-	    <img src={'Armenian_Manuscript_no._4_Wellcome_L0022854.jpg'}/>
-	  </div>
-          <div className={'culture-image'}>
-	    <img src={'Armenian_martial_dance_Yarkhushta.jpg'}/>
-	  </div>
-          <div className={'culture-image'}>
-	    <img src={'Cover,_Armenia,_18th_century,_Linen,_silk,_plain_weave,_embroidery_(cross_stitch),_drawnwork_lace,_Honolulu_Academy_of_Arts.jpg'}/>
-	  </div>
-          <div className={'culture-image'}>
-	    <img src={'artsakh.jpg'}/>
-	  </div>
-          <div className={'culture-image'}>
-	    <img src={'LeonIIQueenGueraneAndTheirFiveChildren1272.jpg'}/>
-	  </div>
-          <div className={'culture-image'}>
-	    <img src={'Tatev_Monastery_from_a_distance.jpg'}/>
-	  </div>
-          <div className={'culture-image'}> <img src={'dilijan.jpg'}/>
-	  </div>
-	</Slider>
-
+	<div className={'banner-slider'}>
+	  <Slider {...settings}>
+	    <div className={'culture-image'}>
+	      <img src={'komitas.jpg'}/>
+	    </div>
+	    <div className={'culture-image'}>
+	      <img src={'1280px-Matenadaran_3.jpg'}/>
+	    </div>
+            <div className={'culture-image'}>
+	      <img src={'Armenian_Manuscript_no._4_Wellcome_L0022854.jpg'}/>
+	    </div>
+            <div className={'culture-image'}>
+	      <img src={'Armenian_martial_dance_Yarkhushta.jpg'}/>
+	    </div>
+            <div className={'culture-image'}>
+	      <img src={'Cover,_Armenia,_18th_century,_Linen,_silk,_plain_weave,_embroidery_(cross_stitch),_drawnwork_lace,_Honolulu_Academy_of_Arts.jpg'}/>
+	    </div>
+            <div className={'culture-image'}>
+	      <img src={'artsakh.jpg'}/>
+	    </div>
+            <div className={'culture-image'}>
+	      <img src={'LeonIIQueenGueraneAndTheirFiveChildren1272.jpg'}/>
+	    </div>
+            <div className={'culture-image'}>
+	      <img src={'Tatev_Monastery_from_a_distance.jpg'}/>
+	    </div>
+            <div className={'culture-image'}> <img src={'dilijan.jpg'}/>
+	    </div>
+	  </Slider>
+	</div>
       </div>
     );
   }
