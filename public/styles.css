@@ -48,6 +48,10 @@ header > ul { margin-left:auto;}
   header > * {
     font-size:xx-large;
   }
+  
+  .mid-calendar-component {
+    min-height:600px;
+  }
 
 }
 

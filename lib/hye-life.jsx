@@ -38,8 +38,8 @@ class Banner extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows:false,
-      afterChange:function() {
-	console.log(arguments);
+      afterChange:function(idx) {
+	console.log(idx);
       }
     };
     return (
@@ -51,6 +51,7 @@ class Banner extends Component {
 	    </p>
 	    {langs}
 	  </div>
+	  <p> Hello </p>
         </header>
 
 	<div className={'banner-slider'}>
@@ -108,6 +109,7 @@ class ArtsCalendar extends Component {
   }
 
   render () {
+
     return (
       <div className={'mid-calendar-component'}>
         <BigCalendar
