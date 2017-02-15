@@ -21,11 +21,12 @@ make a `pull request` to me.
 
 # Adding a Facebook group for the events calendar
 To add a FB group for the events calendar to automatically show, just
-checkout the `groups.json` file, add a `Facebook` group name and its
-ID, then open a pull request with the new group added.
+checkout the `backend/groups.json` file, add a `Facebook` group name and its
+ID, then open a pull request with the new group added. You can find
+the group's ID using something like `https://lookup-id.com`.
 
 # Adding/Making changes to the slideshow
 To make a change to the slide show, like changing a description or
 adding a new slide or even just reordering them, look at
-`slides.jsx`. Change what is appropriate and open a pull request with
-the changes.
+`lib/slides.jsx`. Change what is appropriate and open a pull request
+with the changes.
