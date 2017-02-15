@@ -15,6 +15,6 @@ fs.readFile('../backend/groups.json', 'utf-8', (_, d) => {
   const groups = JSON.parse(d);
   const db_promises = require
   ('../backend/sqlite-promises')
-  (new sqlite3.Database('../silicondzor.db'));
+  (new sqlite3.Database('../hye-life.db'));
   query_events(groups, db_promises);
 });
