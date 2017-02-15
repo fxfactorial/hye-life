@@ -6,20 +6,60 @@ html { box-sizing: border-box; }
 
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
-* { font-family: 'Raleway', sans-serif; }
-
-@media (max-width: 600px) {
-  header {
-    font-size:medium;
-  }
+* {
+  font-family: 'Raleway', sans-serif;
+  min-height: 0;
+  min-width: 0;
 }
 
-@media (min-width: 601px) {
-  header {
+img {
+  background-size:cover;
+  min-height:100%;
+  min-width:100%;
+}
+
+ul {list-style-type:none;}
+li { cursor:pointer; }
+.language-active { font-style:italic; }
+.top-bar-container {display:flex;}
+
+header {
+  background-color: #2d4c63;
+  background-image: url("grunge-wall.png");
+}
+
+header > div {
+  display:flex;
+  padding:1em;
+  justify-content:space-between;
+}
+
+header > ul { margin-left:auto;}
+
+@media (max-width: 300px) {
+
+}
+
+@media (min-width:700px) {
+  .culture-image {
+    max-height:600px;
+  }
+
+  header > * {
     font-size:xx-large;
   }
+
+  .mid-calendar-component {
+    min-height:400px;
+    min-width:100px;
+  }
+
+  .mid-calendar-component > div {
+    background-color:red;
+    height:50%;
+    width:50%;
+  }
+
 }
 
-.login-form > * { margin-bottom: 1.0rem; }
-.modal-inputs > * { margin-bottom: 0.3rem; }
-ul > li { padding-left:1em; }
+ul > li { padding-right:0.50em; }

@@ -26,7 +26,7 @@ const FBReq = (req, cb) => {
   });
 };
 
-function events_every(time, db_promises, tweet) {
+function events_every(time, db_promises) {
   setInterval(() => {
     fs.readFile('./groups.json', 'utf-8', (_, d) => {
       let groups = null;
@@ -35,13 +35,13 @@ function events_every(time, db_promises, tweet) {
       try       { groups = JSON.parse(d);}
       catch (_) { return;/* Not a big deal, just wait for the next interval */ }
 
-      query_events(groups, db_promises, tweet);
+      query_events(groups, db_promises);
 
     });
   }, time);
 }
 
-function query_events(groups, db_promises, tweet) {
+function query_events(groups, db_promises) {
   for (const group_name in groups) {
     const group_id = groups[group_name];
     const now = Math.floor(Date.now() / 1000);
@@ -67,9 +67,6 @@ of events for ${group_name}, ${JSON.stringify(res)}
 	db_promises
 	  .get(`select title from event where id = $id`,
 	       {$id:`fb-${each.id}`});
-	// If we've never seen it before, let's announce it.
-	if (record === undefined)
-	  await tweet({title, description:each.description, url});
         db_promises
           .run(`
              insert or replace into event values

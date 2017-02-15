@@ -5,7 +5,6 @@
 const fs = require('fs');
 const env = require('../backend/env');
 const sqlite3 = require('sqlite3');
-const tweet = require('../backend/tweet-events');
 const {query_events} = require('../backend/fb-events');
 
 if (!env.production) {
@@ -17,5 +16,5 @@ fs.readFile('../backend/groups.json', 'utf-8', (_, d) => {
   const db_promises = require
   ('../backend/sqlite-promises')
   (new sqlite3.Database('../silicondzor.db'));
-  query_events(groups, db_promises, tweet);
+  query_events(groups, db_promises);
 });
