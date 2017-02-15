@@ -7,12 +7,19 @@ const default_scroll_time = new Date(1970, 1, 1, 4);
 moment_timezone.tz.setDefault('Asia/Yerevan');
 BigCalendar.momentLocalizer(moment_timezone);
 
+const images = [
+  {descr: 'Komitas in thought', src: 'komitas.jpg'},
+  {descr: 'The Matendaran manuscript library', src: '1280px-Matenadaran_3.jpg'},
+  {descr: 'Manuscripts', src: ''}
+];
+
 class Banner extends Component {
 
-  state = {event_count:0}
+  state = {event_count:0, image_index:0}
 
   componentDidMount() {
-    this.setState({event_count:window.__EVENT_COUNT_THIS_MONTH__});
+    this.setState({...this.state,
+		   event_count:window.__EVENT_COUNT_THIS_MONTH__});
   }
 
   render () {
@@ -38,9 +45,7 @@ class Banner extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows:false,
-      afterChange:function(idx) {
-	console.log(idx);
-      }
+      afterChange:image_index => this.setState({...this.state, image_index})
     };
     return (
       <div className={'top-banner-container'}>
@@ -51,7 +56,6 @@ class Banner extends Component {
 	    </p>
 	    {langs}
 	  </div>
-	  <p> Hello </p>
         </header>
 
 	<div className={'banner-slider'}>
@@ -84,6 +88,7 @@ class Banner extends Component {
 	    </div>
 	  </Slider>
 	</div>
+	{`${images[this.state.image_index].descr}`}
       </div>
     );
   }
@@ -113,7 +118,6 @@ class ArtsCalendar extends Component {
     return (
       <div className={'mid-calendar-component'}>
         <BigCalendar
-          selectable
           scrollToTime={default_scroll_time}
           popup={true}
 	  onSelectEvent={event => alert(`

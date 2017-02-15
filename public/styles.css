@@ -50,9 +50,13 @@ header > ul { margin-left:auto;}
   }
   
   .mid-calendar-component {
-    min-height:600px;
+    margin-left:1em;
+    margin-right:1em;
   }
 
+  .rbc-calendar {
+    min-height:600px;
+  }
 }
 
 ul > li { padding-right:0.50em; }

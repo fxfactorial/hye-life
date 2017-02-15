@@ -102,7 +102,7 @@ hyelife.use((_, r, __) => r.status(404).send(`
 <body>
   <h3> Sorry, I don't know what resource you're trying to access </h3>
   <p>
-    Head back to <a href='http://silicondzor.com'>silicondzor.com</a>
+    Head back to <a href='http://hye.life'>hye.life</a>
   </p>
 </body>
 `));
