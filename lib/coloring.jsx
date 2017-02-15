@@ -1,20 +1,20 @@
 import groups from '../backend/groups.json';
 
-// const emojis = [🏛,
-//   🎟,
-//   🖼,
-//   🎻,
-// ];
+const emojis = [
+  '🏛',
+  '🎟',
+  '🖼',
+  '🎻',
+];
 
-// export const emoji_for_cat = cat => {
-//   switch(cat) {
-//   case 'musuem':           return emojis[0];
-//   case 'casual':           return emojis[1];
-//   case 'gallery':          return emojis[2];
-//   case 'live performance': return emojis[3];
-//   default:                 return '';
-//   };
-// };
+let categories = [];
+for (const name in groups) { categories.push(groups[name].category); }
+
+categories = Array.from(new Set(categories));
+
+export const emoji_for_cat = cat => {
+  return emojis[categories.indexOf(cat)];
+};
 
 export const color_for_cat = cat => {
   switch(cat) {

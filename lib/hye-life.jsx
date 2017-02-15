@@ -3,7 +3,7 @@ import BigCalendar from 'react-big-calendar';
 import moment_timezone from 'moment-timezone';
 import Slider from 'react-slick';
 import images from './slides';
-import {color_for_host, color_for_cat} from './coloring';
+import {color_for_host, color_for_cat, emoji_for_cat} from './coloring';
 // Very awesome build time sharing of code, yay webpack2
 import groups from '../backend/groups.json';
 
@@ -176,7 +176,7 @@ const cats = Array.from(new Set(items))
 	return (
 	  <div className={'event-legend-color'}
 	       key={event_t}>
-	    <h2>{event_t}</h2>
+	    <h2>{event_t}{' '}{emoji_for_cat(event_t)}</h2>
 	    <div
 	      style={{
 		backgroundColor:color_for_cat(event_t),
@@ -201,7 +201,8 @@ class _ extends Component {
   state = {lang:'Eng'}
 
   render () {
-    const link = <a href={'https://github.com/fxfactorial/hye-life'}>here</a>;
+    const link =
+	  <a href={'https://github.com/fxfactorial/hye-life'}>here</a>;
     return (
       <div>
         <Banner
