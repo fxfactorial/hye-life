@@ -62,6 +62,10 @@ header > ul { margin-left:auto;}
     position:absolute;
   }
 
+  footer {
+    margin-top:1em;
+  }
+
 }
 
 ul > li { padding-right:0.50em; }

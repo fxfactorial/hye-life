@@ -2,26 +2,15 @@ import React, { Component } from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment_timezone from 'moment-timezone';
 import Slider from 'react-slick';
+import images from './slides';
 
 const default_scroll_time = new Date(1970, 1, 1, 4);
 moment_timezone.tz.setDefault('Asia/Yerevan');
 BigCalendar.momentLocalizer(moment_timezone);
 
-const images = [
-  {descr: 'Komitas in thought', src: 'komitas.jpg'},
-  {descr: 'The Matendaran manuscript library', src: '1280px-Matenadaran_3.jpg'},
-  {descr: 'Manuscripts', src: 'Armenian_Manuscript_no._4_Wellcome_L0022854.jpg'},
-  {descr: 'Armenian Yarkhuskta Dance', src: 'Armenian_martial_dance_Yarkhushta.jpg'},
-  {descr: '18th Century Armenian Linen weave', src: 'Cover,_Armenia,_18th_century,_Linen,_silk,_plain_weave,_embroidery_(cross_stitch),_drawnwork_lace,_Honolulu_Academy_of_Arts.jpg'},
-  {descr: 'Cave', src: 'artsakh.jpg'},
-  {descr: 'LeonII, Queen Guerane and their five children - 1272', src: 'LeonIIQueenGueraneAndTheirFiveChildren1272.jpg'},
-  {descr: 'Tatev Monastery', src: 'Tatev_Monastery_from_a_distance.jpg'},
-  {descr: 'Dilijan, a piece of Switzerland in Armenia', src:'dilijan.jpg'}
-];
-
 const slides = images.map(o => {
   return (
-    <div className={'culture-image'} title={o.descr}>
+    <div key={o.descr} className={'culture-image'} title={o.descr}>
       <img src={o.src}/>
     </div>
   );
@@ -55,13 +44,12 @@ class Banner extends Component {
       dots: false,
       infinite: true,
       autoplay:true,
-      speed: 500,
+      speed: 600,
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows:false,
       afterChange:image_index => this.setState({...this.state, image_index})
     };
-
 
     return (
       <div className={'top-banner-container'}>
