@@ -33,6 +33,7 @@ hyelife.use(require('morgan')('combined'));
 const site = (tech_events, e_count) => `
 <!doctype html>
 <meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="Armenian cultural events calendar"
       content="See all the arts and cultural events scheduled in Yerevan and all of Armenia in one place"/>
 <head>

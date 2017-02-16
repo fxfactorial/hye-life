@@ -45,11 +45,22 @@ header > ul { margin-left:auto;}
   padding-bottom:1em;
 }
 
-@media (max-width: 300px) {
+.banner-slider > h2 {
+  background-color:grey;
+}
+
+@media (min-width:300px) and (orientation:portrait) {
+  .culture-image {
+    max-height:200px;
+  }
+
+  .rbc-calendar {
+    min-height:300px;
+  }
 
 }
 
-@media (min-width:700px) {
+@media (min-width:900px) {
   .culture-image {
     max-height:600px;
   }
@@ -63,7 +74,6 @@ header > ul { margin-left:auto;}
   }
 
   .banner-slider > h2 {
-    background-color:grey;
     opacity:0.70;
     left:5%;
     width:600px;
