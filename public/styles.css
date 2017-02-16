@@ -49,6 +49,11 @@ header > ul { margin-left:auto;}
   background-color:grey;
 }
 
+.legend-color {
+  min-height:20px;
+  border-radius:10px;
+}
+
 @media (min-width:300px) and (orientation:portrait) {
   .culture-image {
     max-height:200px;
@@ -56,6 +61,10 @@ header > ul { margin-left:auto;}
 
   .rbc-calendar {
     min-height:300px;
+  }
+
+  .legend-description {
+    font-size:x-small;
   }
 
 }

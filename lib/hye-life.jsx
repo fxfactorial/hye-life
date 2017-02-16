@@ -191,6 +191,27 @@ function EventAgenda({event}) {
 let items = [];
 for (const name in groups) { items.push(groups[name].category); }
 
+const legend = color_scheme => {
+  return (
+    Array.from(new Set(items))
+      .map(event_t => {
+	return (
+	  <div key={event_t}>
+	    <h2 className={'legend-description'}>
+	      {event_t}{' '}{emoji_for_cat(event_t)}
+	    </h2>
+	    <div
+	      className={'legend-color'}
+	      style={{
+		backgroundColor:color_for_cat(event_t, color_scheme)
+	      }}>
+	    </div>
+	  </div>
+	);
+      })
+  );
+};
+
 export default
 class _ extends Component {
 
@@ -203,28 +224,9 @@ class _ extends Component {
   render () {
     const link =
 	  <a href={'https://github.com/fxfactorial/hye-life'}>here</a>;
-    
-    const cats = Array.from(new Set(items))
-      .map(event_t => {
-	return (
-	  <div className={'event-legend-color'}
-	       key={event_t}>
-	    <h2>{event_t}{' '}{emoji_for_cat(event_t)}</h2>
-	    <div
-	      style={{
-		backgroundColor:color_for_cat(event_t,
-					      this.state.color_scheme),
-		minHeight:'20px',
-		borderRadius:'10px'
-	      }}>
-	    </div>
-	  </div>
-	);
-      });
-
-    const legend = (
+    const calendar_legend = (
       <div className={'events-legend'}>
-	{cats}
+	{legend(this.state.color_scheme)}
       </div>
     );
     // color_scheme_pick={this.color_pick}
@@ -234,7 +236,7 @@ class _ extends Component {
 	  color_scheme={this.state.color_scheme}
 	  event_titles_language={this.state.lang}
 	  language_pick={lang => this.setState({...this.state, lang})} />
-	  {legend}
+	  {calendar_legend}
 	  <ArtsCalendar title_language={this.state.lang}/>
 	  <footer>
             <p>
