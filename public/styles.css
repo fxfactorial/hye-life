@@ -13,8 +13,7 @@ html { box-sizing: border-box; }
 
 img {
   background-size:cover;
-  min-height:100%;
-  min-width:100%;
+  /* object-fit:scale-down; */
 }
 
 ul {list-style-type:none;}
@@ -54,17 +53,34 @@ header > ul { margin-left:auto;}
   border-radius:10px;
 }
 
+footer {
+  text-align:center;
+  background-color: #2d4c63;
+  background-image: url("grunge-wall.png");
+  padding-top:1em;
+  padding-bottom:1em;
+}
+
 @media (min-width:300px) and (orientation:portrait) {
+
+  img {
+    height:450px;
+  }
+
   .culture-image {
     max-height:200px;
   }
 
   .rbc-calendar {
-    min-height:300px;
+    min-height:400px;
   }
 
   .legend-description {
     font-size:x-small;
+  }
+
+  .rbc-toolbar {
+    display:none;
   }
 
 }
@@ -94,13 +110,6 @@ header > ul { margin-left:auto;}
     position:absolute;
   }
 
-  footer {
-    text-align:center;
-    background-color: #2d4c63;
-    background-image: url("grunge-wall.png");
-    padding-top:1em;
-    padding-bottom:1em;
-  }
 
 }
 
