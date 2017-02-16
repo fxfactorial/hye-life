@@ -90,6 +90,30 @@ footer {
 
 }
 
+@media (min-width:300px) and (orientation:landscape) {
+
+  img {
+    height:250px;
+  }
+
+  .culture-image {
+    max-height:200px;
+  }
+
+  .rbc-calendar {
+    min-height:600px;
+  }
+
+  .legend-description {
+    font-size:medium;
+  }
+
+  .rbc-toolbar {
+    padding-top:5px;
+  }
+
+}
+
 @media (min-width:900px) {
   .culture-image {
     max-height:600px;
