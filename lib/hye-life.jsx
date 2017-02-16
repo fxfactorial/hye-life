@@ -17,13 +17,11 @@ const languages = ['Eng', 'РУС', 'Հայ'];
 moment_timezone.tz.setDefault('Asia/Yerevan');
 BigCalendar.momentLocalizer(moment_timezone);
 
-const slides = images.map(o => {
-  return (
-    <div key={o.descr} className={'culture-image'} title={o.descr}>
-      <img src={o.src}/>
-    </div>
-  );
-});
+const slides = images.map(o => (
+  <div key={o.descr} className={'culture-image'} title={o.descr}>
+    <img src={o.src}/>
+  </div>
+));
 
 class Banner extends Component {
 
