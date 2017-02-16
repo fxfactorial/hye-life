@@ -20,6 +20,7 @@ BigCalendar.momentLocalizer(moment_timezone);
 const slides = images.map(o => (
   <div key={o.descr} className={'culture-image'} title={o.descr}>
     <img src={o.src}/>
+    <p className={'image-descr'}>{o.descr}</p>
   </div>
 ));
 
