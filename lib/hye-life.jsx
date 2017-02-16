@@ -38,6 +38,14 @@ class Banner extends Component {
   //   const v = e.target.value;
   // }
 
+  before_change_handler = image_index => {
+    if (image_index === Object.keys(images).length - 1) {
+      this.setState({...this.state, image_index:0});
+    } else {
+      this.setState({...this.state, image_index:image_index + 1});
+    }
+  }
+
   render () {
     const choices = languages.map((item, idx) => {
       const c =
@@ -61,7 +69,7 @@ class Banner extends Component {
       pauseOnHover:false,
       slidesToShow: 2,
       arrows:false,
-      beforeChange:image_index => this.setState({...this.state, image_index:image_index + 1})
+      beforeChange:this.before_change_handler
     };
 	  // <select value={this.props.color_scheme}
 	  // 	  onChange={this.handle_scheme_change}>
