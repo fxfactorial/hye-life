@@ -242,6 +242,7 @@ class _ extends Component {
 	      improvements provided via github pull requests are{' '}
 	      warmly appreciated.
 	    </p>
+	    <p>Created by <a href={'http://hyegar.com'}>Edgar Aroutiounian</a></p>
 	  </footer>
       </div>
     );
