@@ -59,18 +59,15 @@ class Banner extends Component {
       speed: 800,
       // autoplaySpeed:3000,
       pauseOnHover:false,
-      slidesToShow: 1,
-      // slidesToScroll: 1,
-      arrows:true,
-      afterChange:image_index => this.setState({...this.state, image_index})
+      slidesToShow: 2,
+      arrows:false,
+      beforeChange:image_index => this.setState({...this.state, image_index:image_index + 1})
     };
-
 	  // <select value={this.props.color_scheme}
 	  // 	  onChange={this.handle_scheme_change}>
 	  //   <option value={'neutral'}>neutral</option>
 	  //   <option value={'bright'}>bright</option>
 	  // </select>
-
     return (
       <div className={'top-banner-container'}>
         <header>
