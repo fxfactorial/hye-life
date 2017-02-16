@@ -115,6 +115,11 @@ footer {
 }
 
 @media (min-width:900px) {
+
+  img {
+    height:400px;
+  }
+
   .culture-image {
     max-height:600px;
   }
