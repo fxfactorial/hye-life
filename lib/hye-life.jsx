@@ -23,25 +23,25 @@ const slides = images.map(o => (
   </div>
 ));
 
+const breakpoints = {
+  big:{
+    breakpoint:2400, jump:3
+  },
+  mid:{
+    breakpoint:800, jump:2
+  },
+  small:{
+    breakppint:380, jump:1
+  }
+};
+
 class Banner extends Component {
 
-  state = {event_count:0, image_index:0}
+  state = {event_count:0}
 
   componentDidMount() {
     this.setState({...this.state,
 		   event_count:window.__EVENT_COUNT_THIS_MONTH__});
-  }
-
-  // handle_scheme_change = e => {
-  //   const v = e.target.value;
-  // }
-
-  before_change_handler = image_index => {
-    if (image_index === Object.keys(images).length - 1) {
-      this.setState({...this.state, image_index:0});
-    } else {
-      this.setState({...this.state, image_index:image_index + 1});
-    }
   }
 
   render () {
@@ -59,23 +59,22 @@ class Banner extends Component {
     );
 
     const responsive = [{
-      breakpoint: 2400,
+      breakpoint: breakpoints.big.breakpoint,
       settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3
+        slidesToShow: breakpoints.big.jump,
+        slidesToScroll: breakpoints.big.jump
       }
     }, {
-      breakpoint: 600,
+      breakpoint: breakpoints.mid.breakpoint,
       settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        initialSlide: 2
+        slidesToShow: breakpoints.mid.jump,
+        slidesToScroll: breakpoints.mid.jump
       }
     }, {
-      breakpoint: 480,
+      breakpoint: breakpoints.small.breakppint,
       settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToShow: breakpoints.small.jump,
+        slidesToScroll: breakpoints.small.jump
       }
     }];
 
@@ -83,17 +82,12 @@ class Banner extends Component {
       dots: false,
       infinite: true,
       autoplay:true,
-      speed: 800,
+      speed: 1200,
       pauseOnHover:false,
       responsive,
-      arrows:false,
-      beforeChange:this.before_change_handler
+      arrows:false
     };
-	  // <select value={this.props.color_scheme}
-	  // 	  onChange={this.handle_scheme_change}>
-	  //   <option value={'neutral'}>neutral</option>
-	  //   <option value={'bright'}>bright</option>
-	  // </select>
+
     return (
       <div className={'top-banner-container'}>
         <header>
@@ -104,11 +98,7 @@ class Banner extends Component {
 	    {langs}
 	  </div>
         </header>
-
-	<div className={'banner-slider'} >
-	  <h2>
-	    {`${images[this.state.image_index].descr}`}
-	  </h2>
+	<div className={'banner-slider'}>
 	  <Slider {...settings}>
 	    {slides}
 	  </Slider>
@@ -235,10 +225,6 @@ class _ extends Component {
 
   state = {lang:'Eng', color_scheme:BRIGHTS}
 
-  // color_pick (color) {
-  //   this.setState({...this.state, color_scheme:BRIGHTS});
-  // }
-
   render () {
     const link =
 	  <a href={'https://github.com/fxfactorial/hye-life'}>here</a>;
@@ -247,7 +233,7 @@ class _ extends Component {
 	{legend(this.state.color_scheme)}
       </div>
     );
-    // color_scheme_pick={this.color_pick}
+
     return (
       <div>
         <Banner

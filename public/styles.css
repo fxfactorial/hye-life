@@ -25,6 +25,7 @@ ul {list-style-type:none;}
 li { cursor:pointer; }
 .language-active { font-style:italic; }
 .top-bar-container {display:flex;}
+ul > li { padding-right:0.50em; }
 
 header {
   background-color: var(--banner-color);
@@ -132,18 +133,4 @@ footer {
     min-height:600px;
   }
 
-  .banner-slider > h2 {
-    opacity:0.70;
-    left:5%;
-    width:600px;
-    bottom:40%;
-    padding:15px;
-    z-index:1;
-    font-size:xx-large;
-    border-radius:10px;
-    position:absolute;
-  }
-
 }
-
-ul > li { padding-right:0.50em; }
