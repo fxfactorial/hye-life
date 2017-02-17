@@ -177,4 +177,13 @@ footer {
   #mobile-message {
     display:none
   }
+
+  .rbc-toolbar-label {
+    display:none;
+  }
+
+  .rbc-toolbar {
+    justify-content:space-between;
+  }
+
 }
