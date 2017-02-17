@@ -43,7 +43,9 @@ const localization = {
     museum:'թանգարան',
     gallery:'պատկերասրահ',
     'live performance':'կենդանի կատարում',
-    details:'միջոցառումները վերցվում են հետևյալ հայկական ֆեյսբուքյան խմբերից'
+    details:'միջոցառումները վերցվում են հետևյալ հայկական ֆեյսբուքյան խմբերից',
+    created_by:'Պատրաստված է Էդգար Հարությունյանի կողմից',
+    mobile_msg:'Միջոցառումները ավելի լավ տեսնելու համար այցելեք համակարգչից կամ շրջեք էկրանը'
   },
   eng: {
     title:'arts & cultural events',
@@ -51,7 +53,9 @@ const localization = {
     museum:'museum',
     gallery:'gallery',
     'live performance':'live performance',
-    details:'Sourcing events from these Armenian Facebook groups'
+    details:'Sourcing events from these Armenian Facebook groups',
+    created_by:'Created by Edgar Aroutiounian',
+    mobile_msg:'You can see the events on hye.life better on desktop or landscape on mobile'
   },
   rus: {
     title:'Искусство и культурные мероприятия',
@@ -59,7 +63,9 @@ const localization = {
     museum:'Музей',
     gallery:'Галлерея',
     'live performance':'Прямой эфир',
-    details:'Получение информации о мероприятиях из этих групп Facebook'
+    details:'Получение информации о мероприятиях из этих групп Facebook',
+    created_by:'',
+    mobile_msg:''
   }
 };
 
@@ -318,10 +324,7 @@ class _ extends Component {
 	    <summary>{local.details}</summary>
 	    {group_descriptions}
 	  </details>
-	  <p id={'mobile-message'}>
-	    You can see the events on hye.life better on
-	    desktop or landscape on mobile
-	  </p>
+	  <p id={'mobile-message'}>{local.mobile_msg}</p>
 	  <ArtsCalendar title_language={this.state.lang}/>
 	  <footer>
             <p>
@@ -330,7 +333,7 @@ class _ extends Component {
 	      warmly appreciated.
 	    </p>
 	    <p>
-	      Created by <a href={'http://hyegar.com'}> Edgar Aroutiounian</a>
+	      <a href={'http://hyegar.com'}>{local.created_by}</a>
 	    </p>
 	  </footer>
       </div>
