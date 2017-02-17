@@ -94,6 +94,22 @@ footer > p {
   border-radius:5px;
 }
 
+.group-descriptions {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+}
+
+details > summary {
+  text-align:center;
+}
+
+.group-descriptions > p {
+  background-color:orange;
+  padding:5px;
+  margin-top:0.25em;
+}
+
 .language-choices {
   display:flex;
 }
@@ -204,7 +220,7 @@ footer > p {
 }
 
 #mobile-message {
-  background-color:orange;
+  background-color:green;
   text-align:center;
   padding-top:0.25em;
   padding-bottom:0.25em;

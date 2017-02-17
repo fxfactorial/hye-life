@@ -200,8 +200,15 @@ function EventAgenda({event}) {
   );
 };
 
-let items = [];
+const items = [];
+const group_descr = [];
 for (const name in groups) { items.push(groups[name].category); }
+for (const name in groups) {
+  group_descr.push({
+    name,
+    link:`https://www.facebook.com/profile.php?id=${groups[name].id}`
+  });
+}
 
 const legend = color_scheme => {
   return (
@@ -224,6 +231,18 @@ const legend = color_scheme => {
   );
 };
 
+const group_descriptions = (
+  <div className={'group-descriptions'}>
+    {group_descr.map(({name, link}) => {
+      return (
+	<p>
+	  <a href={link}>{name}</a>
+	</p>
+      );
+    })}
+  </div>
+);
+
 export default
 class _ extends Component {
 
@@ -245,6 +264,10 @@ class _ extends Component {
 	  event_titles_language={this.state.lang}
 	  language_pick={lang => this.setState({...this.state, lang})} />
 	  {calendar_legend}
+	  <details open={true}>
+	    <summary>Sourcing events from these Armenian Facebook groups</summary>
+	    {group_descriptions}
+	  </details>
 	  <p id={'mobile-message'}>
 	    You can see the events on hye.life better on
 	    desktop or landscape on mobile
@@ -256,7 +279,9 @@ class _ extends Component {
 	      improvements provided via github pull requests are{' '}
 	      warmly appreciated.
 	    </p>
-	    <p>Created by <a href={'http://hyegar.com'}>Edgar Aroutiounian</a></p>
+	    <p>
+	      Created by <a href={'http://hyegar.com'}> Edgar Aroutiounian</a>
+	    </p>
 	  </footer>
       </div>
     );
