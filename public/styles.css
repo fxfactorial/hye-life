@@ -172,3 +172,9 @@ footer {
     display:none
   }
 }
+
+@media (min-width: 450px) and (orientation:landscape) {
+  #mobile-message {
+    display:none
+  }
+}
