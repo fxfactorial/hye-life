@@ -36,6 +36,7 @@ const breakpoints = {
   }
 };
 
+// Probably should be in a DB
 const localization = {
   haj: {
     title:'Արվեստ և մշակութային իրադարձություններ',
@@ -46,7 +47,8 @@ const localization = {
     details:'միջոցառումները վերցվում են հետևյալ հայկական ֆեյսբուքյան խմբերից',
     created_by:'Պատրաստված է Էդգար Հարությունյանի կողմից',
     mobile_msg:'Միջոցառումները ավելի լավ տեսնելու համար այցելեք համակարգչից կամ շրջեք էկրանը',
-    acknowledgments:'Թարգմանությունները տրամադրվել են iterate-ի հաքերների կողմից'
+    acknowledgments:'Թարգմանությունները տրամադրվել են iterate-ի հաքերների կողմից',
+    pr:'Կայքի ամբողջական կոդը կարող եք գտնել այստեղ։ Կայքը բարելավելումները github-ում pull request-ների տեսքով ջերմորեն կգնահատվեն։'
   },
   eng: {
     title:'arts & cultural events',
@@ -57,7 +59,8 @@ const localization = {
     details:'Sourcing events from these Armenian Facebook groups',
     created_by:'Created by Edgar Aroutiounian',
     mobile_msg:'You can see the events on hye.life better on desktop or landscape on mobile',
-    acknowledgments:'Translations were provided by hackers from iterate'
+    acknowledgments:'Translations provided by hackers from iterate',
+    pr:'Get the source code here, improvements provided via github pull requests are warmly appreciated.'
   },
   rus: {
     title:'Искусство и культурные мероприятия',
@@ -66,8 +69,10 @@ const localization = {
     gallery:'Галлерея',
     'live performance':'Прямой эфир',
     details:'Получение информации о мероприятиях из этих групп Facebook',
-    created_by:'',
-    mobile_msg:''
+    created_by:'Сделано Эдгаром Арутюняном',
+    mobile_msg:'Лучше обозревать календарь событий с помощью компьютера или горизонтально расположенного телефона',
+    acknowledgments:'Перевод был предоставлен хакерами из Iterate',
+    pr:'Скачать исходный код вы можете Здесь, улучшения, предоставленные в виде github pull requests, будут высоко оценены'
   }
 };
 
@@ -169,7 +174,7 @@ class ArtsCalendar extends Component {
     return (
       <div className={'mid-calendar-component'}>
         <BigCalendar
-	   messages={this.messages}
+	  messages={this.messages}
           scrollToTime={default_scroll_time}
           popup={true}
 	  onSelectEvent={event => alert(`
@@ -303,8 +308,8 @@ class _ extends Component {
     else if (this.state.lang === ARMENIAN) local = localization.haj;
     else local = localization.eng;
 
-    const link =
-	  <a href={'https://github.com/fxfactorial/hye-life'}>here</a>;
+    const pr_link =
+      'https://github.com/fxfactorial/hye-life';
     const calendar_legend = (
       <div className={'events-legend'}>
 	{legend(this.state.color_scheme, local)}
@@ -318,28 +323,22 @@ class _ extends Component {
 	  color_scheme={this.state.color_scheme}
 	  event_titles_language={this.state.lang}
 	  language_pick={this.language_pick}/>
-	  {calendar_legend}
-	  <details>
-	    <summary>{local.details}</summary>
-	    {group_descriptions}
-	  </details>
-	  <p id={'mobile-message'}>{local.mobile_msg}</p>
-	  <ArtsCalendar title_language={this.state.lang}/>
-	  <footer>
-            <p>
-	      Get the source code {link},
-	      improvements provided via github pull requests are{' '}
-	      warmly appreciated.
-	    </p>
-	    <p>
-	      <a href={'http://hyegar.com'}>{local.created_by}</a>
-	    </p>
-	    <p>
-	      <a href={'http://iteratehackerspace.com'}>
-		{local.acknowledgments}
-	      </a>
-	    </p>
-	  </footer>
+	{calendar_legend}
+	<details>
+	  <summary>{local.details}</summary>
+	  {group_descriptions}
+	</details>
+	<p id={'mobile-message'}>{local.mobile_msg}</p>
+	<ArtsCalendar title_language={this.state.lang}/>
+	<footer>
+          <p> <a href={pr_link}> {local.pr} </a> </p>
+	  <p>
+	    <a href={'http://iteratehackerspace.com'}>
+	      {local.acknowledgments}
+	    </a>
+	  </p>
+	  <p> <a href={'http://hyegar.com'}>{local.created_by}</a> </p>
+	</footer>
       </div>
     );
   }
