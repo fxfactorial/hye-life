@@ -22,6 +22,9 @@ export const brights = ['#258039', '#F5BE41', '#31A9B8', '#CF3721'];
 
 export const NEUTRAL = 'neutral';
 export const BRIGHTS = 'brights';
+export const ENGLISH = 'Eng';
+export const RUSSIAN = 'РУС';
+export const ARMENIAN = 'Հայ';
 
 export const color_for_cat = (cat, choice) => {
   if (choice === NEUTRAL)

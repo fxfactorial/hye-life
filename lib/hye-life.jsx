@@ -5,14 +5,14 @@ import Slider from 'react-slick';
 import images from './slides';
 import {
   color_for_host, color_for_cat, emoji_for_cat,
-  NEUTRAL, BRIGHTS
+  NEUTRAL, BRIGHTS, ENGLISH, RUSSIAN, ARMENIAN
 }
 from './coloring';
 // Very awesome build time sharing of code, yay webpack2
 import groups from '../backend/groups.json';
 
 const default_scroll_time = new Date(1970, 1, 1, 4);
-const languages = ['Eng', 'РУС', 'Հայ'];
+const languages = [ENGLISH, RUSSIAN, ARMENIAN];
 
 moment_timezone.tz.setDefault('Asia/Yerevan');
 BigCalendar.momentLocalizer(moment_timezone);
@@ -33,6 +33,33 @@ const breakpoints = {
   },
   small:{
     breakppint:380, jump:1
+  }
+};
+
+const localization = {
+  haj: {
+    title:'Արվեստ և մշակութային իրադարձություններ',
+    casual:'առօրյա',
+    museum:'թանգարան',
+    gallery:'պատկերասրահ',
+    'live performance':'կենդանի կատարում',
+    details:'միջոցառումները վերցվում են հետևյալ հայկական ֆեյսբուքյան խմբերից'
+  },
+  eng: {
+    title:'arts & cultural events',
+    casual:'casual',
+    museum:'museum',
+    gallery:'gallery',
+    'live performance':'live performance',
+    details:'Sourcing events from these Armenian Facebook groups'
+  },
+  rus: {
+    title:'Искусство и культурные мероприятия',
+    casual:'Повседневный',
+    museum:'Музей',
+    gallery:'Галлерея',
+    'live performance':'Прямой эфир',
+    details:'Получение информации о мероприятиях из этих групп Facebook'
   }
 };
 
@@ -89,13 +116,14 @@ class Banner extends Component {
       responsive,
       arrows:false
     };
-
+    const title =
+	  `${this.state.event_count} ${this.props.localization.title} 🇦🇲`;
     return (
       <div className={'top-banner-container'}>
         <header>
 	  <div className={'top-banner-event-count'}>
 	    <p>
-	      {`${this.state.event_count} arts & cultural events  🇦🇲`}
+	      {title}
 	    </p>
 	    {langs}
 	  </div>
@@ -210,14 +238,15 @@ for (const name in groups) {
   });
 }
 
-const legend = color_scheme => {
+const legend = (color_scheme, localization) => {
   return (
     Array.from(new Set(items))
       .map(event_t => {
+	let descr = localization[event_t];
 	return (
 	  <div key={event_t}>
 	    <h2 className={'legend-description'}>
-	      {event_t}{' '}{emoji_for_cat(event_t)}
+	      {descr}{' '}{emoji_for_cat(event_t)}
 	    </h2>
 	    <div
 	      className={'legend-color'}
@@ -243,29 +272,50 @@ const group_descriptions = (
   </div>
 );
 
+
 export default
 class _ extends Component {
 
-  state = {lang:'Eng', color_scheme:BRIGHTS}
+  state = {
+    lang:ENGLISH,
+    color_scheme:BRIGHTS,
+    localization:localization.eng
+  }
+
+  language_pick = lang => {
+    if (lang === ENGLISH)
+      this.setState({...this.state, lang, localization:localization.eng});
+    else if (lang === RUSSIAN)
+      this.setState({...this.state, lang, localization:localization.rus});
+    else
+      this.setState({...this.state,lang, localization:localization.haj});
+  }
 
   render () {
+    let local = null;
+
+    if (this.state.lang === RUSSIAN) local = localization.rus;
+    else if (this.state.lang === ARMENIAN) local = localization.haj;
+    else local = localization.eng;
+
     const link =
 	  <a href={'https://github.com/fxfactorial/hye-life'}>here</a>;
     const calendar_legend = (
       <div className={'events-legend'}>
-	{legend(this.state.color_scheme)}
+	{legend(this.state.color_scheme, local)}
       </div>
     );
 
     return (
       <div>
         <Banner
+	  localization={this.state.localization}
 	  color_scheme={this.state.color_scheme}
 	  event_titles_language={this.state.lang}
-	  language_pick={lang => this.setState({...this.state, lang})} />
+	  language_pick={this.language_pick}/>
 	  {calendar_legend}
 	  <details>
-	    <summary>Sourcing events from these Armenian Facebook groups</summary>
+	    <summary>{local.details}</summary>
 	    {group_descriptions}
 	  </details>
 	  <p id={'mobile-message'}>
@@ -287,4 +337,3 @@ class _ extends Component {
     );
   }
 };
-
