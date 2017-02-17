@@ -112,6 +112,8 @@ class Banner extends Component {
 
 class ArtsCalendar extends Component {
 
+  messages = {next:'>', previous:'<'}
+
   state = {
     events: [],
     allDay:false,
@@ -120,12 +122,11 @@ class ArtsCalendar extends Component {
   }
 
   componentDidMount() {
-    window.__ALL_TECH_EVENTS__ =
-      window.__ALL_TECH_EVENTS__.map(event => {
-        const start = new Date(event.start);
-        const end = new Date(event.end);
-	return {...event, start, end };
-      });
+    window.__ALL_TECH_EVENTS__ = window.__ALL_TECH_EVENTS__.map(event => {
+      const start = new Date(event.start);
+      const end = new Date(event.end);
+      return {...event, start, end };
+    });
     this.setState({...this.state, events: window.__ALL_TECH_EVENTS__});
   }
 
@@ -134,6 +135,7 @@ class ArtsCalendar extends Component {
     return (
       <div className={'mid-calendar-component'}>
         <BigCalendar
+	   messages={this.messages}
           scrollToTime={default_scroll_time}
           popup={true}
 	  onSelectEvent={event => alert(`
