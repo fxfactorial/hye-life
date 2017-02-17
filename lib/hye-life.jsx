@@ -264,7 +264,7 @@ class _ extends Component {
 	  event_titles_language={this.state.lang}
 	  language_pick={lang => this.setState({...this.state, lang})} />
 	  {calendar_legend}
-	  <details open={true}>
+	  <details>
 	    <summary>Sourcing events from these Armenian Facebook groups</summary>
 	    {group_descriptions}
 	  </details>
