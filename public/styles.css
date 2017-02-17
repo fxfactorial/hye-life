@@ -137,6 +137,10 @@ details > summary {
 
 }
 
+.top-banner-event-count > p {
+  text-align:center;
+}
+
 @media (min-width:300px) and (orientation:portrait) {
 
   footer > p {
@@ -145,7 +149,6 @@ details > summary {
   }
 
   .top-banner-event-count > p {
-    text-align:center;
     color:white;
     opacity:0.65;
     margin-left:2em;
