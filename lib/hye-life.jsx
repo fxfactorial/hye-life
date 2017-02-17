@@ -39,6 +39,7 @@ const breakpoints = {
 // Probably should be in a DB
 const localization = {
   haj: {
+    datetime:{today:'Այսօր', month:'Ամիս', week:'Շաբաթ', day:'Օր', agenda:'Օրակարգ'},
     title:'Արվեստ և մշակութային իրադարձություններ',
     casual:'առօրյա',
     museum:'թանգարան',
@@ -48,9 +49,10 @@ const localization = {
     created_by:'Պատրաստված է Էդգար Հարությունյանի կողմից',
     mobile_msg:'Միջոցառումները ավելի լավ տեսնելու համար այցելեք համակարգչից կամ շրջեք էկրանը',
     acknowledgments:'Թարգմանությունները տրամադրվել են iterate-ի հաքերների կողմից',
-    pr:'Կայքի ամբողջական կոդը կարող եք գտնել այստեղ։ Կայքը բարելավելումները github-ում pull request-ների տեսքով ջերմորեն կգնահատվեն։'
+    pr:'Կայքի ամբողջական կոդը կարող եք գտնել այստեղ։ Կայքի բարելավելումները github-ում pull request-ների տեսքով ջերմորեն կգնահատվեն։'
   },
   eng: {
+    datetime:{today:'today', month:'month', week:'week', day:'day', agenda:'agenda'},
     title:'arts & cultural events',
     casual:'casual',
     museum:'museum',
@@ -63,6 +65,7 @@ const localization = {
     pr:'Get the source code here, improvements provided via github pull requests are warmly appreciated.'
   },
   rus: {
+    datetime:{today:'Сегодня', month:'Месяц', week:'Неделя', day:'День', agenda:'все события'},
     title:'Искусство и культурные мероприятия',
     casual:'Повседневный',
     museum:'Музей',
@@ -174,7 +177,7 @@ class ArtsCalendar extends Component {
     return (
       <div className={'mid-calendar-component'}>
         <BigCalendar
-	  messages={this.messages}
+	  messages={{...this.messages, ...this.props.localization.datetime}}
           scrollToTime={default_scroll_time}
           popup={true}
 	  onSelectEvent={event => alert(`
@@ -329,7 +332,9 @@ class _ extends Component {
 	  {group_descriptions}
 	</details>
 	<p id={'mobile-message'}>{local.mobile_msg}</p>
-	<ArtsCalendar title_language={this.state.lang}/>
+	<ArtsCalendar
+	  localization={this.state.localization}
+	  title_language={this.state.lang}/>
 	<footer>
           <p> <a href={pr_link}> {local.pr} </a> </p>
 	  <p>
