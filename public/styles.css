@@ -82,6 +82,7 @@ footer {
 footer > p {
   color:white;
   opacity:0.65;
+  min-width:60px;
   margin-left:5em;
   margin-right:5em;
   padding-top:0.5em;
@@ -120,11 +121,16 @@ details > summary {
 
 @media (min-width:300px) and (orientation:portrait) {
 
+  footer > p {
+    margin-left:1em;
+    margin-right:1em;
+  }
+
   .top-banner-event-count > p {
     color:white;
     opacity:0.65;
-    margin-left:5em;
-    margin-right:5em;
+    margin-left:2em;
+    margin-right:2em;
     padding-top:0.5em;
     margin-top:0.5em;
     margin-bottom:0.5em;
@@ -160,7 +166,6 @@ details > summary {
   }
 
 }
-
 
 @media (min-width:300px) and (orientation:landscape) {
 

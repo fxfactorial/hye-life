@@ -235,7 +235,7 @@ const group_descriptions = (
   <div className={'group-descriptions'}>
     {group_descr.map(({name, link}) => {
       return (
-	<p>
+	<p key={name}>
 	  <a href={link}>{name}</a>
 	</p>
       );
