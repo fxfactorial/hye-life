@@ -286,6 +286,13 @@ details > summary {
 
 }
 
+summary {
+  background: #333;
+  color: #FFF;
+  padding: 5px 10px;
+  outline: none;
+}
+
 @media only screen
 and (min-width:300px)
 and (max-width:700px) {
