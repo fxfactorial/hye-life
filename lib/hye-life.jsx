@@ -127,7 +127,10 @@ class Banner extends Component {
       dots: false,
       infinite: true,
       autoplay:true,
-      speed: 1200,
+      // Move to new slides every 4 seconds
+      autoplaySpeed: 5000,
+      // How long the entire transition should take
+      speed:2000,
       pauseOnHover:false,
       responsive,
       arrows:false
