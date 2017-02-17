@@ -50,15 +50,16 @@ class Banner extends Component {
       const c =
 	    item === this.props.event_titles_language
 	    ? 'language-active' : 'language-inactive';
-      return <li key={idx} className={c}>{item}</li>;
-    });
-    const langs = (
-      <ul className={'language-choices'}
+      return (
+	<li
+	  key={idx}
+	  className={c}
 	  onClick={e => this.props.language_pick(e.target.textContent)}>
-	{choices}
-      </ul>
-    );
-
+	  {item}
+	</li>
+      );
+    });
+    const langs = <ul className={'language-choices'}>{choices}</ul>;
     const responsive = [{
       breakpoint: breakpoints.big.breakpoint,
       settings: {
