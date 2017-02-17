@@ -195,6 +195,17 @@ footer {
 }
 
 @media (min-width: 450px) and (orientation:landscape) {
+
+  .top-banner-container > header > div > .language-choices {
+    flex-direction:row !important;
+    display:flex !important;
+    align-self:stretch;
+  }
+
+  .top-banner-container > header > div > .language-choices > li {
+    margin:0.5em;
+  }
+
   #mobile-message {
     display:none
   }
