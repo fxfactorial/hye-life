@@ -173,13 +173,17 @@ footer {
   }
 }
 
-@media (min-width: 450px) and (orientation:landscape) {
-  #mobile-message {
-    display:none
-  }
+@media (max-width:600px) and (orientation:landscape) {
 
   .rbc-toolbar-label {
     display:none;
+  }
+
+}
+
+@media (min-width: 450px) and (orientation:landscape) {
+  #mobile-message {
+    display:none
   }
 
   .rbc-toolbar {
