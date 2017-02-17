@@ -242,6 +242,7 @@ class _ extends Component {
 	  event_titles_language={this.state.lang}
 	  language_pick={lang => this.setState({...this.state, lang})} />
 	  {calendar_legend}
+	  <p id={'mobile-message'}>hye.life looks better on desktop or landscape on mobile</p>
 	  <ArtsCalendar title_language={this.state.lang}/>
 	  <footer>
             <p>
