@@ -79,6 +79,21 @@ footer {
   padding-bottom:1em;
 }
 
+footer > p {
+  color:white;
+  opacity:0.65;
+  margin-left:5em;
+  margin-right:5em;
+  padding-top:0.5em;
+  margin-top:0.5em;
+  margin-bottom:0.5em;
+  padding-left:0.5em;
+  padding-right:0.5em;
+  padding-bottom:0.5em;
+  background-color:grey;
+  border-radius:5px;
+}
+
 .language-choices {
   display:flex;
 }
@@ -88,6 +103,21 @@ footer {
 }
 
 @media (min-width:300px) and (orientation:portrait) {
+
+  .top-banner-event-count > p {
+    color:white;
+    opacity:0.65;
+    margin-left:5em;
+    margin-right:5em;
+    padding-top:0.5em;
+    margin-top:0.5em;
+    margin-bottom:0.5em;
+    padding-left:0.5em;
+    padding-right:0.5em;
+    padding-bottom:0.5em;
+    background-color:grey;
+    border-radius:5px;
+  }
 
   img {
     height:450px;
@@ -219,6 +249,22 @@ footer {
 @media only screen
 and (min-width:300px)
 and (max-width:700px) {
+
+  .top-banner-event-count > p {
+    font-size:x-large;
+    color:white;
+    opacity:0.65;
+    margin-left:.5em;
+    margin-right:.5em;
+    padding-top:0.5em;
+    margin-top:0.5em;
+    margin-bottom:0.5em;
+    padding-left:0.5em;
+    padding-right:0.5em;
+    padding-bottom:0.5em;
+    background-color:grey;
+    border-radius:5px;
+  }
 
   .top-banner-container > header > div > .language-choices,
   .top-banner-container > header > div > .language-choices > li,
