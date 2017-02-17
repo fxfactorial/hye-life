@@ -119,6 +119,24 @@ details > summary {
   color:orange !important;
 }
 
+@media (min-width:300px) and (max-width:700px) {
+  .events-legend {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .events-legend > div {
+    min-width:200px;
+  }
+
+  .events-legend > div > h2 {
+    text-align:center;
+    font-size:large;
+  }
+
+}
+
 @media (min-width:300px) and (orientation:portrait) {
 
   footer > p {
@@ -127,6 +145,7 @@ details > summary {
   }
 
   .top-banner-event-count > p {
+    text-align:center;
     color:white;
     opacity:0.65;
     margin-left:2em;

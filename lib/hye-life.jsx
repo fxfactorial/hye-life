@@ -45,7 +45,8 @@ const localization = {
     'live performance':'կենդանի կատարում',
     details:'միջոցառումները վերցվում են հետևյալ հայկական ֆեյսբուքյան խմբերից',
     created_by:'Պատրաստված է Էդգար Հարությունյանի կողմից',
-    mobile_msg:'Միջոցառումները ավելի լավ տեսնելու համար այցելեք համակարգչից կամ շրջեք էկրանը'
+    mobile_msg:'Միջոցառումները ավելի լավ տեսնելու համար այցելեք համակարգչից կամ շրջեք էկրանը',
+    acknowledgments:'Թարգմանությունները տրամադրվել են iterate-ի հաքերների կողմից'
   },
   eng: {
     title:'arts & cultural events',
@@ -55,7 +56,8 @@ const localization = {
     'live performance':'live performance',
     details:'Sourcing events from these Armenian Facebook groups',
     created_by:'Created by Edgar Aroutiounian',
-    mobile_msg:'You can see the events on hye.life better on desktop or landscape on mobile'
+    mobile_msg:'You can see the events on hye.life better on desktop or landscape on mobile',
+    acknowledgments:'Translations were provided by hackers from iterate'
   },
   rus: {
     title:'Искусство и культурные мероприятия',
@@ -128,9 +130,7 @@ class Banner extends Component {
       <div className={'top-banner-container'}>
         <header>
 	  <div className={'top-banner-event-count'}>
-	    <p>
-	      {title}
-	    </p>
+	    <p>{title}</p>
 	    {langs}
 	  </div>
         </header>
@@ -278,7 +278,6 @@ const group_descriptions = (
   </div>
 );
 
-
 export default
 class _ extends Component {
 
@@ -334,6 +333,11 @@ class _ extends Component {
 	    </p>
 	    <p>
 	      <a href={'http://hyegar.com'}>{local.created_by}</a>
+	    </p>
+	    <p>
+	      <a href={'http://iteratehackerspace.com'}>
+		{local.acknowledgments}
+	      </a>
 	    </p>
 	  </footer>
       </div>
