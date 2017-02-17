@@ -53,7 +53,7 @@ class Banner extends Component {
       return <li key={idx} className={c}>{item}</li>;
     });
     const langs = (
-      <ul style={{display:'inline-flex'}}
+      <ul className={'language-choices'} style={{display:'inline-flex'}}
 	  onClick={e => this.props.language_pick(e.target.textContent)}>
 	{choices}
       </ul>
@@ -92,7 +92,7 @@ class Banner extends Component {
     return (
       <div className={'top-banner-container'}>
         <header>
-	  <div>
+	  <div className={'top-banner-event-count'}>
 	    <p>
 	      {`${this.state.event_count} arts & cultural events  🇦🇲`}
 	    </p>
@@ -242,7 +242,10 @@ class _ extends Component {
 	  event_titles_language={this.state.lang}
 	  language_pick={lang => this.setState({...this.state, lang})} />
 	  {calendar_legend}
-	  <p id={'mobile-message'}>hye.life looks better on desktop or landscape on mobile</p>
+	  <p id={'mobile-message'}>
+	    You can see the events on hye.life better on
+	    desktop or landscape on mobile
+	  </p>
 	  <ArtsCalendar title_language={this.state.lang}/>
 	  <footer>
             <p>

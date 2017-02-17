@@ -101,6 +101,34 @@ footer {
     display:none;
   }
 
+  .top-banner-event-count > p {
+    margin-bottom:10px;
+  }
+
+}
+
+@media (min-width:300px) {
+
+  .top-banner-container > header > div > .language-choices,
+  .top-banner-container > header > div > .language-choices > li,
+  .top-banner-container > header > div {
+    padding-bottom:10px;
+    align-items:center;
+    flex-direction:column;
+  }
+
+  .top-banner-container > header > div > .language-choices > li {
+    color:white;
+    text-align:center;
+    width:320%;
+    opacity:0.65;
+    padding-top:0.5em;
+    margin-top:0.5em;
+    margin-bottom:0.5em;
+    background-color:grey;
+    border-radius:5px;
+  }
+  
 }
 
 @media (min-width:300px) and (orientation:landscape) {
