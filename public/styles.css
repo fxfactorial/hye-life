@@ -79,6 +79,14 @@ footer {
   padding-bottom:1em;
 }
 
+.language-choices {
+  display:flex;
+}
+
+.language-active {
+  color:orange !important;
+}
+
 @media (min-width:300px) and (orientation:portrait) {
 
   img {

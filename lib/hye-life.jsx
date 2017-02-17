@@ -53,7 +53,7 @@ class Banner extends Component {
       return <li key={idx} className={c}>{item}</li>;
     });
     const langs = (
-      <ul className={'language-choices'} style={{display:'inline-flex'}}
+      <ul className={'language-choices'}
 	  onClick={e => this.props.language_pick(e.target.textContent)}>
 	{choices}
       </ul>
