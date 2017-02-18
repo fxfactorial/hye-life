@@ -12,6 +12,10 @@ html { box-sizing: border-box; }
 }
 
 :root {
+  --blurb-opacity:0.65;
+  --blurb-background: #333;
+  --blurb-color: #FFF;
+  --blurb-radius: 5px;
   --banner-color:#2d4c63;
   --banner-image:url("grunge-wall.png");
 }
@@ -26,6 +30,13 @@ li { cursor:pointer; }
 .language-active { font-style:italic; }
 .top-bar-container {display:flex;}
 ul > li { padding-right:0.50em; }
+
+.top-banner-event-count > p {
+  color:var(--blurb-color);
+  background-color:var(--blurb-background);
+  border-radius:var(--blurb-radius);
+}
+
 
 header {
   background-color: var(--banner-color);
@@ -56,11 +67,23 @@ header > ul { margin-left:auto;}
 
 .legend-color {
   min-height:20px;
-  border-radius:10px;
+  border-radius:var(--blurb-radius);
+}
+
+.legend-description {
+  padding:0.25em;
+  border-radius:var(--blurb-radius);
+  opacity:var(--blurb-opacity);
+  color:var(--blurb-color);
+  background-color:var(--blurb-background);
+}
+
+.legend-description {
+  opacity:1;
 }
 
 .image-descr {
-  opacity:0.65;
+  opacity:var(--blub-opacity);
   position:absolute;
   top:0;
   margin-top:1em;
@@ -80,8 +103,8 @@ footer {
 }
 
 footer > p {
-  color:white;
-  opacity:0.65;
+  color:var(--blurb-color);
+  opacity:var(--blurb-opacity);
   min-width:60px;
   margin-left:5em;
   margin-right:5em;
@@ -91,8 +114,13 @@ footer > p {
   padding-left:0.5em;
   padding-right:0.5em;
   padding-bottom:0.5em;
-  background-color:grey;
-  border-radius:5px;
+  background-color:var(--blurb-background);
+  border-radius:var(--blurb-radius);
+}
+
+footer > p > a {
+  color:var(--blurb-color);
+  opacity:1 !important;
 }
 
 .group-descriptions {
@@ -144,13 +172,12 @@ details > summary {
 @media (min-width:300px) and (orientation:portrait) {
 
   footer > p {
+
     margin-left:1em;
     margin-right:1em;
   }
 
   .top-banner-event-count > p {
-    color:white;
-    opacity:0.65;
     margin-left:2em;
     margin-right:2em;
     padding-top:0.5em;
@@ -159,8 +186,6 @@ details > summary {
     padding-left:0.5em;
     padding-right:0.5em;
     padding-bottom:0.5em;
-    background-color:grey;
-    border-radius:5px;
   }
 
   img {
@@ -184,7 +209,7 @@ details > summary {
   }
 
   .top-banner-event-count > p {
-    margin-bottom:10px;
+    /* margin-bottom:10px; */
   }
 
 }
@@ -230,7 +255,7 @@ details > summary {
   }
 
   header > * {
-    font-size:xx-large;
+    font-size:x-large;
   }
   
   .rbc-calendar {
@@ -267,6 +292,7 @@ details > summary {
 
 }
 
+/* Desktop apparently counts as landscape */
 @media (min-width: 450px) and (orientation:landscape) {
 
   .top-banner-container > header > div > .language-choices {
@@ -275,8 +301,25 @@ details > summary {
     align-self:stretch;
   }
 
-  .top-banner-container > header > div > .language-choices > li {
-    margin:0.5em;
+  .language-choices {
+    display:flex;
+    /* justify-content:space-around; */
+    align-items:center;
+  }
+
+  .language-choices > li {
+    background-color:var(--blurb-background);
+    text-align:center;
+    margin:0.2em;
+    padding:0.4em;
+    /* padding-top:0.5em; */
+    /* margin-right:0.5em; */
+    /* margin-left:0.5em; */
+    border-radius:var(--blurb-radius);
+  }
+
+  .top-banner-event-count > p {
+    padding:.5em;
   }
 
   #mobile-message {
@@ -290,8 +333,8 @@ details > summary {
 }
 
 summary {
-  background: #333;
-  color: #FFF;
+  background: var(--blurb-background);
+  color: var(--blurb-color);
   padding: 5px 10px;
   outline: none;
 }
@@ -302,8 +345,6 @@ and (max-width:700px) {
 
   .top-banner-event-count > p {
     font-size:x-large;
-    color:white;
-    opacity:0.65;
     margin-left:.5em;
     margin-right:.5em;
     padding-top:0.5em;
@@ -312,8 +353,6 @@ and (max-width:700px) {
     padding-left:0.5em;
     padding-right:0.5em;
     padding-bottom:0.5em;
-    background-color:grey;
-    border-radius:5px;
   }
 
   .top-banner-container > header > div > .language-choices,
@@ -325,15 +364,15 @@ and (max-width:700px) {
   }
 
   .top-banner-container > header > div > .language-choices > li {
-    color:white;
+    color:var(--blurb-color);
     text-align:center;
     width:320%;
     opacity:0.65;
     padding-top:0.5em;
     margin-top:0.5em;
     margin-bottom:0.5em;
-    background-color:grey;
-    border-radius:5px;
+    background-color:var(--blurb-background);
+    border-radius:var(--blurb-radius);
   }
 }
 
