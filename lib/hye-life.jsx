@@ -39,7 +39,9 @@ const breakpoints = {
 // Probably should be in a DB
 const localization = {
   haj: {
-    datetime:{today:'Այսօր', month:'Ամիս', week:'Շաբաթ', day:'Օր', agenda:'Օրակարգ'},
+    lang_name:ARMENIAN,
+    datetime:{today:'Այսօր', month:'Ամիս',
+	      week:'Շաբաթ', day:'Օր', agenda:'Օրակարգ'},
     title:'Արվեստ և մշակութային իրադարձություններ',
     casual:'առօրյա',
     museum:'թանգարան',
@@ -52,7 +54,9 @@ const localization = {
     pr:'Կայքի ամբողջական կոդը կարող եք գտնել այստեղ։ Կայքի բարելավելումները github-ում pull request-ների տեսքով ջերմորեն կգնահատվեն։'
   },
   eng: {
-    datetime:{today:'today', month:'month', week:'week', day:'day', agenda:'agenda'},
+    lang_name:ENGLISH,
+    datetime:{today:'today', month:'month', week:'week',
+	      day:'day', agenda:'agenda'},
     title:'arts & cultural events',
     casual:'casual',
     museum:'museum',
@@ -65,7 +69,9 @@ const localization = {
     pr:'Get the source code here, improvements provided via github pull requests are warmly appreciated.'
   },
   rus: {
-    datetime:{today:'Сегодня', month:'Месяц', week:'Неделя', day:'День', agenda:'все события'},
+    lang_name:RUSSIAN,
+    datetime:{today:'Сегодня', month:'Месяц',
+	      week:'Неделя', day:'День', agenda:'все события'},
     title:'Искусство и культурные мероприятия',
     casual:'Повседневный',
     museum:'Музей',
@@ -289,6 +295,49 @@ const group_descriptions = (
   </div>
 );
 
+// Needs to be a component so that we can use window.
+class TodaysEvents extends Component {
+
+  state = { todays_events : [] }
+
+  componentDidMount() {
+    const today = new Date(moment_timezone.now());
+    const todays_events = [];
+    for (const {start, title, desc, sourced_from, url}
+	 of window.__ALL_TECH_EVENTS__) {
+      const d = new Date(start);
+      const is_same_day = (d.getDate() == today.getDate() &&
+			   d.getMonth() == today.getMonth() &&
+			   d.getFullYear() == today.getFullYear());
+      if (is_same_day)
+	todays_events.push({title, desc, sourced_from, url});
+    };
+    this.setState({todays_events});
+  }
+
+  render() {
+
+    const todays_mobile_only = (
+      <div className={'todays-mobile-only'}>
+	<p>{this.props.localization.datetime.today}</p>
+	{this.state.todays_events.map(({title, desc, sourced_from, url}) => {
+	  const chopped =
+		title.split('/')[languages
+				 .indexOf(this.props.localization.lang_name)];
+	  return (
+	    <p key={title}>
+	      <a href={url}>{chopped}</a>
+	    </p>
+	  );
+	})}
+      </div>
+    );
+    return (
+      todays_mobile_only
+    );
+  }
+}
+
 export default
 class _ extends Component {
 
@@ -329,6 +378,7 @@ class _ extends Component {
 	  color_scheme={this.state.color_scheme}
 	  event_titles_language={this.state.lang}
 	  language_pick={this.language_pick}/>
+	<TodaysEvents localization={this.state.localization}/>
 	{calendar_legend}
 	<details>
 	  <summary>{local.details}</summary>
@@ -339,13 +389,13 @@ class _ extends Component {
 	  localization={this.state.localization}
 	  title_language={this.state.lang}/>
 	<footer>
-          <p> <a href={pr_link}> {local.pr} </a> </p>
+          <p><a href={pr_link}>{local.pr}</a></p>
 	  <p>
 	    <a href={'http://iteratehackerspace.com'}>
 	      {local.acknowledgments}
 	    </a>
 	  </p>
-	  <p> <a href={'http://hyegar.com'}>{local.created_by}</a> </p>
+	  <p><a href={'http://hyegar.com'}>{local.created_by}</a></p>
 	</footer>
       </div>
     );

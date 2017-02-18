@@ -336,3 +336,23 @@ and (max-width:700px) {
     border-radius:5px;
   }
 }
+
+.todays-mobile-only {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-top:1.5em;
+  margin-bottom:1.5em;
+}
+
+.todays-mobile-only > p {
+  padding-bottom:1em;
+  font-size:x-large;
+}
+
+@media (min-width:700px) {
+  .todays-mobile-only {
+    display:none;
+  }
+}
+
