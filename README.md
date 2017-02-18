@@ -19,7 +19,7 @@ website, you need to `fork` this project from me on github and then
 clone it on your machine. Once you finish making your changes, you
 make a `pull request` to me.
 
-Use `npm run watch` to recompile babel, webpack, and server.
+Use `npm run watch` to recompile babel, webpack, server and scss.
 
 # Adding a Facebook group for the events calendar
 To add a FB group for the events calendar to automatically show, just
