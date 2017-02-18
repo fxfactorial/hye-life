@@ -52,6 +52,7 @@
     ]
   },
   "scripts": {
+    "watch":"node scripts/watch-project.js",
     "babel-watch": "NODE_ENV='debug' babel lib/*.jsx --watch --out-dir .",
     "webpack-watch": "NODE_ENV='debug' webpack --progress -d --colors --watch",
     "server-watch": "NODE_ENV='debug' nodemon --harmony_async_await backend/server.js",
