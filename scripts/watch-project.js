@@ -5,6 +5,7 @@ const spawn = require('child_process').spawn;
 const watching = [
   {service: "babel-watch"},
   {service: "webpack-watch"},
+  {service: "sass-watch"},
   {service: "server-watch"}
 ];
 
