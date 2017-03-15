@@ -21,5 +21,11 @@
   "Theatre 8":{"id":113273745695312, "category":"live performance"},
   "DAAD Armenia":{"id":152587408099138, "category":"casual"},
   "Yerevan 2.0/Երևան 2.0":{"id":1466008620288844, "category":"casual"},
-  "My Armenia Program":{"id":1595861757410397, "category":"casual"}
+  "My Armenia Program":{"id":1595861757410397, "category":"casual"},
+  "Armenian Music Events":{"id":87335661335, "category":"live performance"},
+  "Music of Armenia":{"id":50389106021, "category":"live performance"},
+  "Sharakan Festival":{"id":294432460910934, "category":"live performance"},
+  "Sayat Nova Festival":{"id":1390790551137754, "category":"live performance"},
+  "Yerevan Duduk Festival":{"id":146958385500850, "category":"live performance"},
+  "Imsokhak Festival":{"id":598613303675382, "category":"live performance"}
 }
