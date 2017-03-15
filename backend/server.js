@@ -93,11 +93,11 @@ group by description
 	sourced_from:item.creator
       };
     });
+    // stackoverflow.com/questions/42813912/get-all-records-that-satisfy-this-month-in-sqlite
     const {event_count} = await db_promises.get(`
-select count(*) as event_count from
-(select title from event
-where (strftime('%m', datetime(end, 'unixepoch')) - 1) =
-(strftime('%m', 'now') + 0) group by title);
+select title, count(*) as event_count from event 
+where (strftime('%m','now') + 0) = (strftime('%m',end,'unixepoch') + 0) 
+group by title;
 `);
     res.end(site(transformed, event_count));
   } catch (e) {
